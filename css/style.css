@@ -6,12 +6,9 @@
     padding: 0;
     box-sizing: border-box;
 }
-html, body {
-    margin: 0;
-    height: 100%;
-}
 
-body {
+.landing {
+    height: 100vh;
     background-image: linear-gradient(to left, #C69274  50%,  #E89898 50%);
     background-size: cover;
     background-repeat: no-repeat;
