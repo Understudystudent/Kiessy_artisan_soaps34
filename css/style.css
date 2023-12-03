@@ -21,7 +21,7 @@
     width: 100px;
 }
 
-.navbar, .info, .about, footer {
+.navbar, .info, .about, footer, #contact {
     background-color: #F9F5F0;
   }
 /* Navbar x */
