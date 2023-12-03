@@ -6,3 +6,75 @@
     padding: 0;
     box-sizing: border-box;
 }
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    background-image: linear-gradient(to left, #C69274  50%,  #E89898 50%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+  
+}
+
+.ksLogo {
+    height: 100px;
+    width: 100px;
+}
+
+.navbar {
+    background-color: #F9F5F0;
+  }
+/* Navbar x */
+  /* Burger Menu */
+.toggler-icon{
+    width: 30px;
+    height: 3px;
+    background-color: red;
+    display: block;
+    transition: all 0.2s;
+  }
+  
+  .middle-bar{
+    margin: 5px auto;
+  }
+  
+  /* Open Burger */
+  .navbar-toggler .top-bar {
+    transform: rotate(45deg);
+    transform-origin: 10% 10%;
+  }
+  
+  .navbar-toggler .middle-bar {
+    opacity: 0;
+    filter: alpha(opacity=0);
+  }
+  
+  .navbar-toggler .bottom-bar {
+    transform: rotate(-45deg);
+    transform-origin: 10% 90%;
+  }
+  /* Open Burger */
+  
+  /* When its an X */
+  .navbar-toggler.collapsed .top-bar {
+    transform: rotate(0);
+  }
+  
+  .navbar-toggler.collapsed .middle-bar {
+    opacity: 1;
+    filter: alpha(opacity=100);
+  }
+  
+  .navbar-toggler.collapsed .bottom-bar {
+    transform: rotate(0);
+  }
+  /* When its an X */
+  
+  /* Color of Toggler when collapsed */
+  .navbar-toggler.collapsed .toggler-icon {
+    background-color: black;
+  }
+/* End Of navbar */
