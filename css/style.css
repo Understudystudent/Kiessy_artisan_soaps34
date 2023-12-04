@@ -1,3 +1,6 @@
+/* Google Fonts */
+
+@import url('https://lifechoicesnpo.slack.com/archives/D062M7UCGTT/p1701686647267979');
 *
 ::after
 ::before
@@ -8,7 +11,7 @@
 }
 
 /* Old background img */
-/* .backgroundImg 
+.backgroundImg 
   {
     height: 100vh;
     background-image: linear-gradient(to left, #C69274  50%,  #E89898 50%);
@@ -16,17 +19,18 @@
     background-repeat: no-repeat;
     position: relative;
   
-} */
+}
 
-.backgroundImg {
+/* .backgroundImg {
   height: auto;
   width: auto;
-  background-image: url("https://i.postimg.cc/PrQ1MmLC/photo-1607006344336-55d6e178f017-blend-000000-blend-alpha-10-blend-mode-normal-blend-w-1-crop-faces.jpg"), url("https://i.postimg.cc/FszYmWXj/photo-1612800083273-24ea5c80313d-q-80-w-1780-auto-format-fit-crop-ixlib-rb-4-0.jpg");
+  background-image: url("https://i.postimg.cc/s24gSXQR/photo-1612800083994-d568da6256ba-q-80-w-1887-auto-format-fit-crop-ixlib-rb-4-0.jpg"), url("https://i.postimg.cc/FszYmWXj/photo-1612800083273-24ea5c80313d-q-80-w-1780-auto-format-fit-crop-ixlib-rb-4-0.jpg");
   background-position: left, right;
   background-repeat: no-repeat;
   background-size: 50% 100%;
+  aspect-ratio: 3/2;
 
-}
+} */
 
 .ksLogo {
     height: 100px;
