@@ -58,22 +58,26 @@
 </nav>
 
 <main class="container-fluid">
-  <div class="row">
-  </div>
-  <div class="row">
-    <div class="col">
-      <input type="text" placeholder="Search Product" required class="form-control" data-search-product>
+  <section class="container">
+    <div class="row">
     </div>
-  </div>
-  <div class="col">
-    <button class="btn btn-dark" data-products-sort>Sorting</button>
-  </div>
+    <div class="row">
+      <div class="col">
+        <input type="text" placeholder="Search Product" required class="form-control" data-search-product>
+      </div>
+    </div>
+    <div class="col">
+      <button class="btn btn-dark" data-products-sort>Sorting</button>
+    </div>
+  <!-- Display products -->
+    <div class="row gap-4 d-block d-md-flex justify-content-between" data-productCard></div>
+  </section>
 </main>
 
 
 <!-- footer -->
 <footer class="text-center">
-    <p>&copy; Kiessy Soap <span id="currentYear"></span></p>
+    <p> Kiessy Soap &copy; <span id="currentYear"></span></p>
 </footer>
 
 <!-- This is bootstrap -->
