@@ -1,22 +1,53 @@
 document.querySelector('#currentYear').textContent = new Date().getFullYear();
 
 let products = JSON.parse(localStorage.getItem('products')) ? JSON.parse(localStorage.getItem('products')) :
-localStorage.setItem('products', JSON.stringify([
+localStorage.setItem('products', JSON.stringify(
+    [
     {
+        "id":1,
         "name": "Lavender fields",
-        "make": "Lavender",
+        "make": "Handmade Soap",
         "amount": 45,
-        "img": "<img src='https://i.postimg.cc/28QgBc5r/ed929619-a18f-484e-9543-6b401a5df5c5.jpg'>"
+        "img": "https://i.postimg.cc/28QgBc5r/ed929619-a18f-484e-9543-6b401a5df5c5.jpg",
+    },
+    {
+        "id":2,
+        "name": "Espresso aroma",
+        "make": "Handmade Soap",
+        "amount": 60,
+        "img": "https://i.postimg.cc/28QgBc5r/ed929619-a18f-484e-9543-6b401a5df5c5.jpg",
+    },
+    {
+        "id":3,
+        "name": "Beaumont Allure",
+        "make": "Handmade Soap",
+        "amount": 70,
+        "img": "https://i.postimg.cc/28QgBc5r/ed929619-a18f-484e-9543-6b401a5df5c5.jpg",
+    },
+    {
+        "id":4,
+        "name": "Jasmine Blossom",
+        "make": "Handmade Soap",
+        "amount": 45,
+        "img": "https://i.postimg.cc/28QgBc5r/ed929619-a18f-484e-9543-6b401a5df5c5.jpg",
+    },
+    {
+        "id":5,
+        "name": "Milk-way Express",
+        "make": "Handmade Soap",
+        "amount": 80,
+        "img": "https://i.postimg.cc/28QgBc5r/ed929619-a18f-484e-9543-6b401a5df5c5.jpg",
     }
-]));
+]
+));
 
-// Display Products to html
+// Display Products to HTML
 function displayProducts() {
     let productGrid = document.querySelector('[data-productCard]');
     productGrid.innerHTML = "";
 
     if (products) {
-        // loop through array
+        // loop through the product in array
         products.forEach((product) => {
             // Add product HTML to the productGrid
             productGrid.innerHTML += `
@@ -25,11 +56,13 @@ function displayProducts() {
                 <div class="card-body">
                     <h5 class="card-title">${product.name}</h5>
                     <p class="card-text">${product.amount}</p>
-                    <button href="#" class="btn btn-dark">Add to Cart</button>
+                    <a href="#" class="btn btn-dark">Add to Cart</a>
                 </div>
             </div>
             `;
         });
+    } else {
+        productGrid.innerHTML = "No products";
     }
 }
 
