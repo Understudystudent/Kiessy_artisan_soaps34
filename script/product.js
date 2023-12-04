@@ -41,14 +41,15 @@ localStorage.setItem('products', JSON.stringify(
 ]
 ));
 
+let productGrid = document.querySelector('[data-productCard]');
+let searchProducts = document.querySelector('[data-search-product]')
+
 // Display Products to HTML
 function displayProducts() {
-    let productGrid = document.querySelector('[data-productCard]');
-    productGrid.innerHTML = "";
-
+    productGrid.innerHTML = ""
     if (products) {
         // loop through the product in array
-        products.forEach((product) => {
+        products.forEach(product => {
             // Add product HTML to the productGrid
             productGrid.innerHTML += `
             <div class="card">
@@ -68,3 +69,31 @@ function displayProducts() {
 
 // Call the function to display products
 displayProducts();
+
+// Searching Products
+searchProducts.addEventListener('keyup',()=>{
+   try{ let searchItem = products.filter( prod =>{
+        return (prod.make.toLowerCase().includes(searchProducts.value.toLowerCase()))  
+    })
+    if (searchItem) {
+        productGrid.innerHTML = "";
+        searchItem.forEach(item=>{
+            productGrid.innerHTML += `
+            <div class="card">
+                <img src="${item.img}" class="card-img-top" alt="${item.name}">
+                <div class="card-body">
+                    <h5 class="card-title">${item.name}</h5>
+                    <p class="card-text">${item.amount}</p>
+                    <a href="#" class="btn btn-dark">Add to Cart</a>
+                </div>
+            </div>
+            `
+        })
+    }else {
+        displayProducts()
+    }
+}catch(e){
+    console.log(e);
+}
+
+})
