@@ -110,3 +110,9 @@
     height: auto;
     display: block;
   }
+
+  /* Product Card */
+
+  .card{
+    width: 18rem ;
+  }
