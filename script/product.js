@@ -98,7 +98,7 @@ function showProducts() {
 // Call the function to display products
 showProducts();
 
-// Searching Products
+// Search Products
 searchProducts.addEventListener('keyup',()=>{
    try{ let searchItem = products.filter( prod =>{
         return (prod.make.toLowerCase().includes(searchProducts.value.toLowerCase()))  
