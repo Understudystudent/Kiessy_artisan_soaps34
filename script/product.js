@@ -76,7 +76,7 @@ function showProducts() {
             // Add product HTML to the productGrid
             productGrid.innerHTML += `
             <div class="card my-3 mx-3">
-            <img src="${product.img}" class="card-img-top" style="height: 300px; object-fit: cover;"></img>
+            <img src="${product.img}" class="card-img-top text-center" style="height: 300px; object-fit: cover;"></img>
                 <div class="card-body">
                     <h5 class="card-title text-center">${product.make}</h5>
                     <p class="card-text text-center">${product.name}</p>
