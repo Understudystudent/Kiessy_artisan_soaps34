@@ -7,14 +7,14 @@ localStorage.setItem('products', JSON.stringify(
         "id":1,
         "name": "Luxury Artisan Handmade Soaps",
         "make": " Lavender fields ",
-        "amount": 45,
+        "amount": 55,
         "img": "https://i.postimg.cc/28QgBc5r/ed929619-a18f-484e-9543-6b401a5df5c5.jpg",
     },
     {
         "id":2,
         "name": "Luxury Artisan Handmade Soaps",
         "make": "Espresso aroma ",
-        "amount": 60,
+        "amount": 45,
         "img": "https://i.postimg.cc/MKnv6BZ7/97222de9-ff18-487e-a3d4-6b67901dc366.jpg",
     },
     {
@@ -66,6 +66,8 @@ localStorage.setItem('products', JSON.stringify(
 let productGrid = document.querySelector('[data-productCard]');
 // Display Products to HTML
 let searchProducts = document.querySelector('[data-search-product]')
+// Sort by price
+let sortPrice =document.querySelector('[data-sort-product]')
 function showProducts() {
     productGrid.innerHTML = ""
     if (products) {
@@ -74,7 +76,7 @@ function showProducts() {
             // Add product HTML to the productGrid
             productGrid.innerHTML += `
             <div class="card my-3 mx-3">
-            <img src="${product.img}" class="card-img-top" style="height: 300px; object-fit: cover;">
+            <img src="${product.img}" class="card-img-top" style="height: 300px; object-fit: cover;"></img>
                 <div class="card-body">
                     <h5 class="card-title text-center">${product.make}</h5>
                     <p class="card-text text-center">${product.name}</p>
@@ -99,30 +101,45 @@ function showProducts() {
 showProducts();
 
 // Search Products
-searchProducts.addEventListener('keyup',()=>{
-   try{ let searchItem = products.filter( prod =>{
-        return (prod.make.toLowerCase().includes(searchProducts.value.toLowerCase()))  
-    })
-    if (searchItem) {
-        productGrid.innerHTML = "";
-        searchItem.forEach(item=>{
-            productGrid.innerHTML += `
-            <div class="card my-2 mx-2">
-                <img src="${item.img}" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title text-center">${item.make}</h5>
-                    <p class="card-text">${item.name}</p>
-                    <p class="card-text ">R${item.amount}</p>
-                    <a href="#" class="btn btn-dark text-center">Add to Cart</a>
-                </div>
-            </div>>
-            `
-        })
-    }else {
-        showProducts()
-    }
-}catch(e){
-    alert(e);
-}
+searchProducts.addEventListener('keyup', () => {
+    try {
+        let searchItem = products.filter(prod => {
+            return prod.make.toLowerCase().includes(searchProducts.value.toLowerCase());
+        });
 
-})
+        if (searchItem.length > 0) {
+            productGrid.innerHTML = "";
+            searchItem.forEach(item => {
+                productGrid.innerHTML += `
+                    <div class="card my-3 mx-3">
+                        <img src="${item.img}" class="card-img-top" style="height: 300px; object-fit: cover;"></img>
+                        <div class="card-body">
+                            <h5 class="card-title text-center">${item.make}</h5>
+                            <p class="card-text text-center">${item.name}</p>
+                            <p class="card-text text-center">R${item.amount}.00</p>
+                            <a href="#" class="btn btn-dark d-flex justify-content-center">Add to Cart</a>
+                        </div>
+                    </div>
+                `;
+            });
+        } else {
+            productGrid.innerHTML = '<h2 class="text-center">No matching products found</h2>';
+        }
+    } catch (e) {
+        alert(e);
+    }
+});
+
+//Sort Products
+sortPrice.addEventListener('click', (e) => {
+    e.preventDefault();
+    try {
+        if (!products) {
+            throw "Sorry, try again later";
+        }
+        products.sort((a, b) => a.amount - b.amount);
+        showProducts();
+    } catch (error) {
+        productGrid.innerHTML = error;
+    }
+});
