@@ -64,24 +64,22 @@ localStorage.setItem('products', JSON.stringify(
 ));
 
 let productGrid = document.querySelector('[data-productCard]');
-let searchProducts = document.querySelector('[data-search-product]')
 // Display Products to HTML
-function displayProducts() {
+let searchProducts = document.querySelector('[data-search-product]')
+function showProducts() {
     productGrid.innerHTML = ""
     if (products) {
         // loop through the product in array
-        console.log(products)
         products.forEach(product => {
             // Add product HTML to the productGrid
-            console.log(product)
             productGrid.innerHTML += `
             <div class="card my-3 mx-3">
-                <img src="${product.img}" class="card-img-top">
+            <img src="${product.img}" class="card-img-top" style="height: 300px; object-fit: cover;">
                 <div class="card-body">
                     <h5 class="card-title text-center">${product.make}</h5>
-                    <p class="card-text">${product.name}</p>
-                    <p class="card-text ">R${product.amount}</p>
-                    <a href="#" class="btn btn-dark text-center">Add to Cart</a>
+                    <p class="card-text text-center">${product.name}</p>
+                    <p class="card-text text-center">R${product.amount}.00</p>
+                    <a href="#" class="btn btn-dark d-flex justify-content-center">Add to Cart</a>
                 </div>
             </div>
             `;
@@ -98,7 +96,7 @@ function displayProducts() {
 }
 
 // Call the function to display products
-displayProducts();
+showProducts();
 
 // Searching Products
 searchProducts.addEventListener('keyup',()=>{
@@ -109,7 +107,7 @@ searchProducts.addEventListener('keyup',()=>{
         productGrid.innerHTML = "";
         searchItem.forEach(item=>{
             productGrid.innerHTML += `
-            <div class="card my-3 mx-3">
+            <div class="card my-2 mx-2">
                 <img src="${item.img}" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title text-center">${item.make}</h5>
@@ -121,7 +119,7 @@ searchProducts.addEventListener('keyup',()=>{
             `
         })
     }else {
-        displayProducts()
+        showProducts()
     }
 }catch(e){
     alert(e);
