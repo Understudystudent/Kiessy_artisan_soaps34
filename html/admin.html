@@ -56,7 +56,38 @@
  </div>
  </div>
 </nav>
+<main class="container-fluid">
+  <!-- Heading -->
+  <div class="row">
+    <h1 class="display-1 text-center ">Admin</h1>
+  </div>
+  <!-- searchbar and btn -->
+  <div class="col d-flex justify-content-center my-5 mx-2 ">
+    <!-- Search Input -->
+    <input type="text" placeholder="Search Product" required class="form-control " admin-search-product>
+    <!-- btn -->
+    <button class="btn btn-dark" admin-product-sort>Sorting</button>
+</div>
+<!-- Grid Names -->
+  <div class="row">
+    <table>
+      <thead class="mb-5">
+        <tr class="text-center my-5">
+          <th class="text-center">Name</th>
+          <th class="text-center"> Image</th>
+          <th class="text-center">Type</th>
+          <th class="text-center" >Action</th>
 
+        </tr>
+      </thead>
+      <!--  -->
+      <tbody table-products class="mt-5">
+      </tbody>
+    </table>
+  </div>
+</main>
+
+<!-- footer -->
 <footer class="text-center">
   <p> Kiessy Soap &copy; <span id="currentYear"></span></p>
 </footer>
