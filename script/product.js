@@ -93,6 +93,7 @@ function showProducts() {
         <div class="spinner-border" role="status">
           <span class="sr-only"></span>
         </div>
+        <div><p>Please Refresh the page</p></div>
       </div>`;
     }
 }
