@@ -143,3 +143,15 @@ sortPrice.addEventListener('click', (e) => {
         productGrid.innerHTML = error;
     }
 });
+
+// Add to cart
+function addToCart(product) {
+    try {
+        // It could be declared globally or within the same scope as this function
+        cartItems.push(product);
+        // Store the updated cartItems in localStorage
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+    } catch (error) {
+        alert(`Error: ${error.message}`);
+    }
+}
