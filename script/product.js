@@ -5,72 +5,100 @@ localStorage.setItem('products', JSON.stringify(
     [
     {
         "id":1,
-        "name": "Lavender fields",
-        "make": "Handmade Soap",
+        "name": "Luxury Artisan Handmade Soaps",
+        "make": " Lavender fields ",
         "amount": 45,
         "img": "https://i.postimg.cc/28QgBc5r/ed929619-a18f-484e-9543-6b401a5df5c5.jpg",
     },
     {
         "id":2,
-        "name": "Espresso aroma",
-        "make": "Handmade Soap",
+        "name": "Luxury Artisan Handmade Soaps",
+        "make": "Espresso aroma ",
         "amount": 60,
-        "img": "https://i.postimg.cc/28QgBc5r/ed929619-a18f-484e-9543-6b401a5df5c5.jpg",
+        "img": "https://i.postimg.cc/MKnv6BZ7/97222de9-ff18-487e-a3d4-6b67901dc366.jpg",
     },
     {
         "id":3,
-        "name": "Beaumont Allure",
-        "make": "Handmade Soap",
+        "name": "Luxury Artisan Handmade Soaps",
+        "make": "Beaumont Allure",
         "amount": 70,
-        "img": "https://i.postimg.cc/28QgBc5r/ed929619-a18f-484e-9543-6b401a5df5c5.jpg",
+        "img": "https://i.postimg.cc/v830RJD1/bd5b3354-1884-4590-8e35-a38694c0802c.jpg",
     },
     {
         "id":4,
-        "name": "Jasmine Blossom",
-        "make": "Handmade Soap",
-        "amount": 45,
-        "img": "https://i.postimg.cc/28QgBc5r/ed929619-a18f-484e-9543-6b401a5df5c5.jpg",
+        "name": "Luxury Artisan Handmade Soaps",
+        "make": "Jasmine Blossom ",
+        "amount": 50,
+        "img": "https://i.postimg.cc/gcXDxNDj/a6d62e2e-beef-45fb-a1cf-cd0f4a3913c3.jpg",
     },
     {
         "id":5,
-        "name": "Milk-way Express",
-        "make": "Handmade Soap",
+        "name": "Luxury Artisan Handmade Soaps",
+        "make": " Milk-way Express ",
         "amount": 80,
-        "img": "https://i.postimg.cc/28QgBc5r/ed929619-a18f-484e-9543-6b401a5df5c5.jpg",
+        "img": "https://i.postimg.cc/7LWRZvwr/photo-1607006411601-775c8cc632dc-blend-000000-blend-alpha-10-blend-mode-normal-blend-w-1-crop-faces.jpg",
+    },
+    {
+        "id":6,
+        "name": " Luxury Artisan Handmade Soaps",
+        "make": "Couple love",
+        "amount": 120,
+        "img": "https://i.postimg.cc/CxRZBsXn/s-l1200.jpg",
+    },
+    {
+        "id":7,
+        "name": "Luxury Artisan Handmade Soaps",
+        "make": "Lemon-grass ",
+        "amount": 80,
+        "img": "https://i.postimg.cc/PT7KKXQh/7-cc45b47e-d917-45c5-8957-387f24ad8c3d-1080x.jpg",
+    },
+    {
+        "id":8,
+        "name": " Luxury Artisan Handmade Soaps",
+        "make": "Pomegranate",
+        "amount": 80,
+        "img": "https://i.postimg.cc/FzRNRcxs/5-cfe20186-e3d1-446d-bf80-61e5e8564131-1080x.jpg",
     }
+    
 ]
 ));
 
 let productGrid = document.querySelector('[data-productCard]');
-let searchProducts = document.querySelector('[data-search-product]')
-
 // Display Products to HTML
-function displayProducts() {
+let searchProducts = document.querySelector('[data-search-product]')
+function showProducts() {
     productGrid.innerHTML = ""
     if (products) {
         // loop through the product in array
         products.forEach(product => {
             // Add product HTML to the productGrid
             productGrid.innerHTML += `
-            <div class="card">
-                <img src="${product.img}" class="card-img-top" alt="${product.name}">
+            <div class="card my-3 mx-3">
+            <img src="${product.img}" class="card-img-top" style="height: 300px; object-fit: cover;">
                 <div class="card-body">
-                    <h5 class="card-title">${product.name}</h5>
-                    <p class="card-text">${product.amount}</p>
-                    <a href="#" class="btn btn-dark">Add to Cart</a>
+                    <h5 class="card-title text-center">${product.make}</h5>
+                    <p class="card-text text-center">${product.name}</p>
+                    <p class="card-text text-center">R${product.amount}.00</p>
+                    <a href="#" class="btn btn-dark d-flex justify-content-center">Add to Cart</a>
                 </div>
             </div>
             `;
         });
-    } else {
-        productGrid.innerHTML = "No products";
+    } 
+    // Display Spinner
+    else {
+        productGrid.innerHTML = `<div class="text-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only"></span>
+        </div>
+      </div>`;
     }
 }
 
 // Call the function to display products
-displayProducts();
+showProducts();
 
-// Searching Products
+// Search Products
 searchProducts.addEventListener('keyup',()=>{
    try{ let searchItem = products.filter( prod =>{
         return (prod.make.toLowerCase().includes(searchProducts.value.toLowerCase()))  
@@ -79,21 +107,22 @@ searchProducts.addEventListener('keyup',()=>{
         productGrid.innerHTML = "";
         searchItem.forEach(item=>{
             productGrid.innerHTML += `
-            <div class="card">
-                <img src="${item.img}" class="card-img-top" alt="${item.name}">
+            <div class="card my-2 mx-2">
+                <img src="${item.img}" class="card-img-top">
                 <div class="card-body">
-                    <h5 class="card-title">${item.name}</h5>
-                    <p class="card-text">${item.amount}</p>
-                    <a href="#" class="btn btn-dark">Add to Cart</a>
+                    <h5 class="card-title text-center">${item.make}</h5>
+                    <p class="card-text">${item.name}</p>
+                    <p class="card-text ">R${item.amount}</p>
+                    <a href="#" class="btn btn-dark text-center">Add to Cart</a>
                 </div>
-            </div>
+            </div>>
             `
         })
     }else {
-        displayProducts()
+        showProducts()
     }
 }catch(e){
-    console.log(e);
+    alert(e);
 }
 
 })

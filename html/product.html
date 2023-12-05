@@ -57,20 +57,20 @@
  </div>
 </nav>
 
-  <main class="container-fluid">
+  <main class="container-fluid" id="productPage">
     <section class="container">
       <div class="row">
       </div>
       <div class="row">
-        <div class="col">
-          <input type="text" placeholder="Search Product" required class="form-control" data-search-product>
-        </div>
-      </div>
-      <div class="col">
-        <button class="btn btn-dark" data-products-sort>Sorting</button>
+        <!-- header -->
+        <h1 class="display-1 text-center ">Our Products</h1>
+        <div class="col d-flex justify-content-center my-5 mx-2 ">
+          <!-- Search Input -->
+          <input type="text" placeholder="Search Product" required class="form-control " data-search-product>
+          <button class="btn btn-dark" data-products-sort>Sorting</button>
       </div>
     <!-- Display products -->
-      <div class="row d-block d-md-flex justify-content-center my-3 " data-productCard></div>
+      <div class="row d-block d-md-flex justify-content-center" data-productCard></div>
     </section>
   </main>
 
