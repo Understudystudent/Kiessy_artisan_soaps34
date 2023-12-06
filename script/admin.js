@@ -68,20 +68,22 @@ function adminContent() {
 // Call the adminContent function to display products in the table
 adminContent();
 
-//Adding Products
-// function addNewProducts() {
-//     let item = {
-//         id: products.length + 1,
-//         name: document.querySelector('#soapName').value,
-//         make: document.querySelector('#typeSoap').value,
-//         amount: document.querySelector('#soapPrice').value,
-//         img: document.querySelector('#soapImg').value,
-//     };
-//     products.push(item);
-//     localStorage.setItem('products', JSON.stringify(products));
-//     adminContent();
-// }
-// document.querySelector('#ModalSoap').addEventListener('click',addNewProducts);
-
-// let pushProducts = document.querySelector('[admin-add-products]')
-// addNewProducts.addEventListner ('click,addNewProducts')
+// Adding Products
+function addNewProducts() {
+    let products = JSON.parse(localStorage.getItem('products')) || [];
+    
+    let item = {
+        id: products.length + 1,
+        name: document.querySelector('#soapName').value,
+        make: document.querySelector('#typeSoap').value,
+        amount: document.querySelector('#soapPrice').value,
+        img: document.querySelector('#soapImg').value,
+    };
+    
+    products.push(item);
+    localStorage.setItem('products', JSON.stringify(products));
+    adminContent();
+}
+document.querySelector('#ModalSoap').addEventListener('click', addNewProducts);
+let pushProducts = document.querySelector('[admin-add-products]');
+pushProducts.addEventListener('click', addNewProducts);

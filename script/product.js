@@ -68,11 +68,13 @@ let productGrid = document.querySelector('[data-productCard]');
 let searchProducts = document.querySelector('[data-search-product]')
 // Sort by price
 let sortPrice =document.querySelector('[data-sort-product]')
+let checkout = JSON.parse(localStorage.getItem('checkout')) ? JSON.parse(localStorage.getItem('checkout')) : {};
 function showProducts() {
     productGrid.innerHTML = ""
     if (products) {
         // loop through the product in array
-        products.forEach(product => {
+        
+        products.forEach( (product, index) => {
             // Add product HTML to the productGrid
             productGrid.innerHTML += `
             <div class="card my-3 mx-3">
@@ -81,10 +83,31 @@ function showProducts() {
                     <h5 class="card-title text-center">${product.make}</h5>
                     <p class="card-text text-center">${product.name}</p>
                     <p class="card-text text-center">R${product.amount}.00</p>
-                    <a href="#" class="btn btn-dark d-flex justify-content-center">Add to Cart</a>
+                    <a href="#" class="btn btn-dark d-flex justify-content-center" addToCartBtn="${index}">Add to Cart</a>
                 </div>
             </div>
             `;
+        });
+        let addToCartBtns = document.querySelectorAll(`[addToCartBtn]`)
+
+        addToCartBtns.forEach( btn => {
+            btn.addEventListener('click', function(){
+                // {id: 1, name: 'Luxury Artisan Handmade Soaps', make: ' Lavender fields ', amount: 55, img: 'https://i.postimg.cc/28QgBc5r/ed929619-a18f-484e-9543-6b401a5df5c5.jpg'}
+                let product = products[btn.getAttribute('addToCartBtn')];
+                let make = product.make;
+                delete product[make];
+
+                // Quanity statement
+                if (checkout.hasOwnProperty(make)) {
+                    checkout[make].quantity = (checkout[make].quantity || 1) + 1;
+                } else {
+                    product.quantity = 1;
+                    checkout[make] = product;
+                }
+
+                checkout[make] = product;
+                localStorage.setItem('checkout', JSON.stringify(checkout)); 
+            });
         });
     } 
     // Display Spinner
@@ -132,13 +155,13 @@ searchProducts.addEventListener('keyup', () => {
 });
 
 //Sort Products
-sortPrice.addEventListener('click', (e) => {
-    e.preventDefault();
+sortPrice.addEventListener('click', (event) => {
+    event.preventDefault();
     try {
         if (!products) {
-            throw "Sorry, try again later";
+            throw "Apologies, please try again later";
         }
-        products.sort((a, b) => a.amount - b.amount);
+        products.sort((a, b) => b.amount - a.amount);
         showProducts();
     } catch (error) {
         productGrid.innerHTML = error;
@@ -146,13 +169,13 @@ sortPrice.addEventListener('click', (e) => {
 });
 
 // Add to cart
-function addToCart(product) {
-    try {
-        // It could be declared globally or within the same scope as this function
-        cartItems.push(product);
-        // Store the updated cartItems in localStorage
-        localStorage.setItem('cart', JSON.stringify(cartItems));
-    } catch (error) {
-        alert(`Error: ${error.message}`);
-    }
-}
+// function addToCart(product) {
+//     try {
+//         // It could be declared globally or within the same scope as this function
+//         cartItems.push(product);
+//         // Store the updated cartItems in localStorage
+//         localStorage.setItem('cart', JSON.stringify(cartItems));
+//     } catch (error) {
+//         alert(`Error: ${error.message}`);
+//     }
+// }
