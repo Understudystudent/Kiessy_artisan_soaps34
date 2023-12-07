@@ -9,7 +9,7 @@ let adminProductSort = document.querySelector('[admin-product-sort]');
 // Getting the item from product to admin
 function adminContent() {
     try {
-        let products = JSON.parse(localStorage.getItem('products'));
+        // let products = JSON.parse(localStorage.getItem('products'));
         tableContent.innerHTML = "";
         products.forEach((product, i) => {
             tableContent.innerHTML += `
@@ -20,7 +20,7 @@ function adminContent() {
                     <td class="text-center" >${product.amount}.00</td>
                     <td>
                         <div> 
-                        <button class="btn btn-dark" data-toggle="modal" data-target="#updateProduct" onclick="editProduct(${product.id})"><i class="bi bi-pencil-square"></i>Edit</button>
+                        <button class="btn btn-dark col-6" data-toggle="modal" data-target="#updateProduct" onclick="editProduct(${product.id})"><i class="bi bi-pencil-square"></i>Edit</button>
 
                          <!-- Modal -->
                           <div class="modal fade" id="updateProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -59,7 +59,7 @@ function adminContent() {
 
                         
 
-                            <button class="btn btn-dark" onclick="deleteProduct(${product.id})"><i class="bi bi-trash3-fill"></i>Delete</button>
+                            <button class="btn btn-dark col-6 my-2" onclick="deleteProduct(${product.id})"><i class="bi bi-trash3-fill"></i>Delete</button>
                         </div>
                     </td>
                 </tr>
@@ -106,42 +106,15 @@ function deleteProduct(id) {
     }
 }
 
-// Edit Products
-function editAdd(){
-    let newProp = JSON.parse(localStorage.getItem('land'));
-    let newland = newProp.find(edt => edt.id -1 === ids)
-    let region = document.querySelector('#region2').value;
-    let neighbour = document.querySelector('#nhood2').value;
-    let street = document.querySelector('#street2').value;
-    let image = document.querySelector('#urlimg2').value;
-    let beds = document.querySelector('#bedNumb2').value;
-    let baths = document.querySelector('#bathNumb2').value;
-    let price = document.querySelector('#price2').value;
-    let landsize = document.querySelector('#landsize2').value;
-
-    newland.address.region = region;
-    newland.address.neighbourhood = neighbour;
-    newland.address.street = street;
-    newland.image = image;
-    newland.rooms.bedrooms = beds;
-    newland.rooms.bathrooms = baths;
-    newland.price = price;
-    newland.size = landsize;
-
-    properties[ids] = newland;
-    localStorage.setItem('land',JSON.stringify(properties));
-    loadData(properties);
-}
 
 //Sort Products
-adminProductSort.addEventListener('click', (event) => {
-    event.preventDefault();
+adminProductSort.addEventListener('click', () => {
     try {
         if (!products) {
             throw "Apologies, Please Refresh the Page";
         }
         products.sort((a, b) => b.amount - a.amount);
-        showProducts();
+        adminContent();
     }
     // Display Spinner
     catch (error) {
@@ -149,7 +122,7 @@ adminProductSort.addEventListener('click', (event) => {
         <div class="spinner-border" role="status">
           <span class="sr-only"></span>
         </div>
-        <div><h2>Procduts are found,Please Refrresh the page</h2></div>
+        <div><h2>Products are not found,Please Refrresh the page</h2></div>
       </div>`;
     }
 });
