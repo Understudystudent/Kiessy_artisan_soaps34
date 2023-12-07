@@ -1,80 +1,80 @@
 document.querySelector('#currentYear').textContent = new Date().getFullYear();
 
 let products = JSON.parse(localStorage.getItem('products')) ? JSON.parse(localStorage.getItem('products')) :
-localStorage.setItem('products', JSON.stringify(
-    [
-    {
-        "id":1,
-        "name": "Luxury Artisan Handmade Soaps",
-        "make": " Lavender fields ",
-        "amount": 55,
-        "img": "https://i.postimg.cc/28QgBc5r/ed929619-a18f-484e-9543-6b401a5df5c5.jpg",
-    },
-    {
-        "id":2,
-        "name": "Luxury Artisan Handmade Soaps",
-        "make": "Espresso aroma ",
-        "amount": 45,
-        "img": "https://i.postimg.cc/MKnv6BZ7/97222de9-ff18-487e-a3d4-6b67901dc366.jpg",
-    },
-    {
-        "id":3,
-        "name": "Luxury Artisan Handmade Soaps",
-        "make": "Beaumont Allure",
-        "amount": 70,
-        "img": "https://i.postimg.cc/v830RJD1/bd5b3354-1884-4590-8e35-a38694c0802c.jpg",
-    },
-    {
-        "id":4,
-        "name": "Luxury Artisan Handmade Soaps",
-        "make": "Jasmine Blossom ",
-        "amount": 50,
-        "img": "https://i.postimg.cc/gcXDxNDj/a6d62e2e-beef-45fb-a1cf-cd0f4a3913c3.jpg",
-    },
-    {
-        "id":5,
-        "name": "Luxury Artisan Handmade Soaps",
-        "make": " Milk-way Express ",
-        "amount": 80,
-        "img": "https://i.postimg.cc/7LWRZvwr/photo-1607006411601-775c8cc632dc-blend-000000-blend-alpha-10-blend-mode-normal-blend-w-1-crop-faces.jpg",
-    },
-    {
-        "id":6,
-        "name": " Luxury Artisan Handmade Soaps",
-        "make": "Couple love",
-        "amount": 120,
-        "img": "https://i.postimg.cc/CxRZBsXn/s-l1200.jpg",
-    },
-    {
-        "id":7,
-        "name": "Luxury Artisan Handmade Soaps",
-        "make": "Lemon-grass ",
-        "amount": 80,
-        "img": "https://i.postimg.cc/PT7KKXQh/7-cc45b47e-d917-45c5-8957-387f24ad8c3d-1080x.jpg",
-    },
-    {
-        "id":8,
-        "name": " Luxury Artisan Handmade Soaps",
-        "make": "Pomegranate",
-        "amount": 80,
-        "img": "https://i.postimg.cc/FzRNRcxs/5-cfe20186-e3d1-446d-bf80-61e5e8564131-1080x.jpg",
-    }
-    
-]
-));
+    localStorage.setItem('products', JSON.stringify(
+        [{
+                "id": 1,
+                "name": "Luxury Artisan Handmade Soaps",
+                "make": " Lavender fields ",
+                "amount": 55,
+                "img": "https://i.postimg.cc/28QgBc5r/ed929619-a18f-484e-9543-6b401a5df5c5.jpg",
+            },
+            {
+                "id": 2,
+                "name": "Luxury Artisan Handmade Soaps",
+                "make": "Espresso aroma ",
+                "amount": 45,
+                "img": "https://i.postimg.cc/MKnv6BZ7/97222de9-ff18-487e-a3d4-6b67901dc366.jpg",
+            },
+            {
+                "id": 3,
+                "name": "Luxury Artisan Handmade Soaps",
+                "make": "Beaumont Allure",
+                "amount": 70,
+                "img": "https://i.postimg.cc/v830RJD1/bd5b3354-1884-4590-8e35-a38694c0802c.jpg",
+            },
+            {
+                "id": 4,
+                "name": "Luxury Artisan Handmade Soaps",
+                "make": "Jasmine Blossom ",
+                "amount": 50,
+                "img": "https://i.postimg.cc/gcXDxNDj/a6d62e2e-beef-45fb-a1cf-cd0f4a3913c3.jpg",
+            },
+            {
+                "id": 5,
+                "name": "Luxury Artisan Handmade Soaps",
+                "make": " Milk-way Express ",
+                "amount": 80,
+                "img": "https://i.postimg.cc/7LWRZvwr/photo-1607006411601-775c8cc632dc-blend-000000-blend-alpha-10-blend-mode-normal-blend-w-1-crop-faces.jpg",
+            },
+            {
+                "id": 6,
+                "name": " Luxury Artisan Handmade Soaps",
+                "make": "Couple love",
+                "amount": 120,
+                "img": "https://i.postimg.cc/CxRZBsXn/s-l1200.jpg",
+            },
+            {
+                "id": 7,
+                "name": "Luxury Artisan Handmade Soaps",
+                "make": "Lemon-grass ",
+                "amount": 80,
+                "img": "https://i.postimg.cc/PT7KKXQh/7-cc45b47e-d917-45c5-8957-387f24ad8c3d-1080x.jpg",
+            },
+            {
+                "id": 8,
+                "name": " Luxury Artisan Handmade Soaps",
+                "make": "Pomegranate",
+                "amount": 80,
+                "img": "https://i.postimg.cc/FzRNRcxs/5-cfe20186-e3d1-446d-bf80-61e5e8564131-1080x.jpg",
+            }
+
+        ]
+    ));
 
 let productGrid = document.querySelector('[data-productCard]');
 // Display Products to HTML
 let searchProducts = document.querySelector('[data-search-product]')
 // Sort by price
-let sortPrice =document.querySelector('[data-sort-product]')
-let checkout = JSON.parse(localStorage.getItem('checkout')) ? JSON.parse(localStorage.getItem('checkout')) : {};
+let sortPrice = document.querySelector('[data-sort-product]')
+let checkout = JSON.parse(localStorage.getItem('checkout')) ? JSON.parse(localStorage.getItem('checkout')) : [];
+
 function showProducts() {
     productGrid.innerHTML = ""
     if (products) {
         // loop through the product in array
-        
-        products.forEach( (product, index) => {
+
+        products.forEach((product, index) => {
             // Add product HTML to the productGrid
             productGrid.innerHTML += `
             <div class="card my-3 mx-3">
@@ -88,28 +88,21 @@ function showProducts() {
             </div>
             `;
         });
-        let addToCartBtns = document.querySelectorAll(`[addToCartBtn]`)
 
-        addToCartBtns.forEach( btn => {
-            btn.addEventListener('click', function(){
-                // {id: 1, name: 'Luxury Artisan Handmade Soaps', make: ' Lavender fields ', amount: 55, img: 'https://i.postimg.cc/28QgBc5r/ed929619-a18f-484e-9543-6b401a5df5c5.jpg'}
+        // Add to cart option 1
+
+        // Initialize an array to product store
+        let addToCartBtns = document.querySelectorAll(`[addToCartBtn]`);
+
+        addToCartBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
                 let product = products[btn.getAttribute('addToCartBtn')];
-                let make = product.make;
-                delete product[make];
-
-                // Quanity statement
-                if (checkout.hasOwnProperty(make)) {
-                    checkout[make].quantity = (checkout[make].quantity || 1) + 1;
-                } else {
-                    product.quantity = 1;
-                    checkout[make] = product;
-                }
-
-                checkout[make] = product;
-                localStorage.setItem('checkout', JSON.stringify(checkout)); 
+                checkout.push(product);
+                // Save the updated checkout to localStorage
+                localStorage.setItem('checkout', JSON.stringify(checkout));
             });
         });
-    } 
+    }
     // Display Spinner
     else {
         productGrid.innerHTML = `<div class="text-center">
@@ -135,19 +128,25 @@ searchProducts.addEventListener('keyup', () => {
             productGrid.innerHTML = "";
             searchItem.forEach(item => {
                 productGrid.innerHTML += `
-                    <div class="card my-3 mx-3">
+                <div class="card my-3 mx-3">
                         <img src="${item.img}" class="card-img-top" style="height: 300px; object-fit: cover;"></img>
                         <div class="card-body">
                             <h5 class="card-title text-center">${item.make}</h5>
                             <p class="card-text text-center">${item.name}</p>
                             <p class="card-text text-center">R${item.amount}.00</p>
                             <a href="#" class="btn btn-dark d-flex justify-content-center">Add to Cart</a>
-                        </div>
+                            </div>
                     </div>
                 `;
             });
-        } else {
-            productGrid.innerHTML = '<h2 class="text-center">No matching products found</h2>';
+        } // Display Spinner
+        else {
+            productGrid.innerHTML = `<div class="text-center">
+            <div class="spinner-border" role="status">
+              <span class="sr-only"></span>
+            </div>
+            <div><h2>No Matching procduts are found</h2></div>
+          </div>`;
         }
     } catch (e) {
         alert(e);
@@ -159,23 +158,18 @@ sortPrice.addEventListener('click', (event) => {
     event.preventDefault();
     try {
         if (!products) {
-            throw "Apologies, please try again later";
+            throw "Apologies, Please Refresh the Page";
         }
         products.sort((a, b) => b.amount - a.amount);
         showProducts();
-    } catch (error) {
-        productGrid.innerHTML = error;
+    }
+    // Display Spinner
+    catch (error) {
+        productGrid.innerHTML = `<div class="text-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only"></span>
+        </div>
+        <div><h2>Procduts are found,Please Refrresh the page</h2></div>
+      </div>`;
     }
 });
-
-// Add to cart
-// function addToCart(product) {
-//     try {
-//         // It could be declared globally or within the same scope as this function
-//         cartItems.push(product);
-//         // Store the updated cartItems in localStorage
-//         localStorage.setItem('cart', JSON.stringify(cartItems));
-//     } catch (error) {
-//         alert(`Error: ${error.message}`);
-//     }
-// }
