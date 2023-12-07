@@ -2,6 +2,9 @@ document.querySelector('#currentYear').textContent = new Date().getFullYear();
 
 let products = JSON.parse(localStorage.getItem('products')) || [];
 let tableContent = document.querySelector('[table-products]');
+let adminProductSort = document.querySelector('[admin-product-sort]');
+
+
 
 // Getting the item from product to admin
 function adminContent() {
@@ -71,37 +74,86 @@ function adminContent() {
 adminContent();
 
 // Adding Products
-// function addNewProducts() {
-//     let item = {
-//         id: products.length + 1,
-//         name: document.querySelector('#soapName').value,
-//         make: document.querySelector('#typeSoap').value,
-//         amount: document.querySelector('#soapPrice').value,
-//         img: document.querySelector('#soapImg').value,
-//     };
-//     // adding itemts into array
-//     products.push(item);
-//     localStorage.setItem('products', JSON.stringify(products));
-//     adminContent();
-// }
+function addNewProducts() {
+    let item = {
+        id: products.length + 1,
+        name: document.querySelector('#soapName').value,
+        make: document.querySelector('#typeSoap').value,
+        amount: document.querySelector('#soapPrice').value,
+        img: document.querySelector('#soapImg').value,
+    };
+    // adding itemts into array
+    products.push(item);
+    localStorage.setItem('products', JSON.stringify(products));
+    adminContent();
+}
 
 // Delete Products
-// function deleteProduct(id) {
-//     let index = products.findIndex(product => product.id === id);
+function deleteProduct(id) {
+    let index = products.findIndex(product => product.id === id);
 
-//     if (index !== -1) {
-//         products.splice(index, 1);
-//         localStorage.setItem('products', JSON.stringify(products));
-//         adminContent();
-//     } else {
-//         productGrid.innerHTML = `<div class="text-center">
-//         <div class="spinner-border" role="status">
-//           <span class="sr-only"></span>
-//         </div>
-//         <div><p>Products not found</p></div>
-//       </div>`;
-//     }
-// }
+    if (index !== -1) {
+        products.splice(index, 1);
+        localStorage.setItem('products', JSON.stringify(products));
+        adminContent();
+    } else {
+        productGrid.innerHTML = `<div class="text-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only"></span>
+        </div>
+        <div><p>Products not found</p></div>
+      </div>`;
+    }
+}
+
+// Edit Products
+function editAdd(){
+    let newProp = JSON.parse(localStorage.getItem('land'));
+    let newland = newProp.find(edt => edt.id -1 === ids)
+    let region = document.querySelector('#region2').value;
+    let neighbour = document.querySelector('#nhood2').value;
+    let street = document.querySelector('#street2').value;
+    let image = document.querySelector('#urlimg2').value;
+    let beds = document.querySelector('#bedNumb2').value;
+    let baths = document.querySelector('#bathNumb2').value;
+    let price = document.querySelector('#price2').value;
+    let landsize = document.querySelector('#landsize2').value;
+
+    newland.address.region = region;
+    newland.address.neighbourhood = neighbour;
+    newland.address.street = street;
+    newland.image = image;
+    newland.rooms.bedrooms = beds;
+    newland.rooms.bathrooms = baths;
+    newland.price = price;
+    newland.size = landsize;
+
+    properties[ids] = newland;
+    localStorage.setItem('land',JSON.stringify(properties));
+    loadData(properties);
+}
+
+//Sort Products
+adminProductSort.addEventListener('click', (event) => {
+    event.preventDefault();
+    try {
+        if (!products) {
+            throw "Apologies, Please Refresh the Page";
+        }
+        products.sort((a, b) => b.amount - a.amount);
+        showProducts();
+    }
+    // Display Spinner
+    catch (error) {
+        productGrid.innerHTML = `<div class="text-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only"></span>
+        </div>
+        <div><h2>Procduts are found,Please Refrresh the page</h2></div>
+      </div>`;
+    }
+});
+
+
 document.querySelector('#ModalSoap').addEventListener('click', addNewProducts);
-let pushProducts = document.querySelector('[admin-add-products]');
 // pushProducts.addEventListener('click', addNewProducts);

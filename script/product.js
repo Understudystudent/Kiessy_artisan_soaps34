@@ -67,6 +67,7 @@ let productGrid = document.querySelector('[data-productCard]');
 let searchProducts = document.querySelector('[data-search-product]')
 // Sort by price
 let sortPrice = document.querySelector('[data-sort-product]')
+// checkout local storage
 let checkout = JSON.parse(localStorage.getItem('checkout')) ? JSON.parse(localStorage.getItem('checkout')) : [];
 
 function showProducts() {
