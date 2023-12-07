@@ -7,6 +7,7 @@
     box-sizing: border-box;
 }
 
+
 /* Old background img */
 .backgroundImg 
   {
@@ -15,6 +16,8 @@
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
+    display: flex;
+    /* justify-content: space-evenly; */
   
 }
 
