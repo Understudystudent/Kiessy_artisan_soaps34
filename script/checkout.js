@@ -66,8 +66,12 @@ function displayCartItems() {
         `;
     } catch (error) {
         // Clear the table in case of an error
-        tableCheckout.innerHTML = '';
-        tableCheckout.style.fontSize = '3rem';
+        tableCheckout.innerHTML = `<div class="text-center">
+        <div class="spinner-border text-center" role="status">
+          <span class="sr-only"></span>
+        </div>
+        <div class="text-center"><p>Your Cart is Empty</p></div>
+      </div>`;
     }
 };
 
