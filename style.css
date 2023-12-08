@@ -1,0 +1,30 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+main {
+    text-align: center;
+}
+
+.callage {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    max-height: 100vh;
+    overflow: auto;
+}
+
+.callage img {
+    flex: 1;
+    height: 100%;
+    object-fit: cover;
+}

@@ -154,7 +154,7 @@ searchProducts.addEventListener('keyup', () => {
         <div class="spinner-border" role="status">
           <span class="sr-only"></span>
         </div>
-        <div><h2>Prodcuts are found,Please Refrresh the page</h2></div>
+        <div><h2>Procduts are not found,Please Refrresh the page</h2></div>
       </div>`;
     }
 });
@@ -175,7 +175,7 @@ sortPrice.addEventListener('click', (event) => {
         <div class="spinner-border" role="status">
           <span class="sr-only"></span>
         </div>
-        <div><h2>Prodcuts are found,Please Refrresh the page</h2></div>
+        <div><h2>Prodcuts are  not found,Please Refrresh the page</h2></div>
       </div>`;
     }
 });

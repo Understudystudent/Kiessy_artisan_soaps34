@@ -5,6 +5,8 @@ let tableCheckout = document.querySelector('[checkoutTable]');
 
 
 
+
+
 // Show items in checkout
 function displayCartItems() {
     try {
@@ -76,7 +78,7 @@ function displayCartItems() {
         <div class="spinner-border text-center" role="status">
           <span class="sr-only"></span>
         </div>
-        <div class="text-center"><p>Your Cart is Empty, Please refresh yor page</p></div>
+        <div class="text-center"><p>Please add items to the cart</p></div>
       </div>`;
     }
 };
@@ -86,23 +88,42 @@ displayCartItems()
 let purchaseBtn = document.querySelector('[purchaseBtn]');
 
 function clickPurchase() {
-    tableCheckout.innerHTML =  `<div class="text-center">
-    <div class="spinner-border text-center" role="status">
-      <span class="sr-only"></span>
-    </div>
-    <div class="text-center"><p>Thank you for your purchase</p></div>
-  </div>`;
+    try {
+        tableCheckout.innerHTML =  `<div class="text-center">
+            <div class="spinner-border text-center" role="status">
+                <span class="sr-only"></span>
+            </div>
+            <div class="text-center"><p>Thank you for your purchase</p></div>
+        </div>`;
+    } catch (error) {
+        tableCheckout.innerHTML = `<div class="text-center">
+        <div class="spinner-border text-center" role="status">
+            <span class="sr-only"></span>
+        </div>
+        <div class="text-center"><p>Car is empty</p></div>
+    </div>`
+    }
 }
+
 purchaseBtn.addEventListener('click', clickPurchase);
 
 // Clear btn by removing the local storage
 let clearBtn = document.querySelector('[clearBtn]');
 clearBtn.addEventListener('click', () => {
-    localStorage.removeItem('checkout');
-    tableCheckout.innerHTML =`<div class="d-flex justify-content-center">
-    <div class="spinner-border text-center" role="status">
-      <span class="sr-only"></span>
-    </div>
-    <div class="text-center"><p>Carted Cleared </p></div>
-  </div>`;
-})
+    try {
+        localStorage.removeItem('checkout');
+        tableCheckout.innerHTML = `<div class="d-flex justify-content-center">
+            <div class="spinner-border text-center" role="status">
+                <span class="sr-only"></span>
+            </div>
+            <div class="text-center"><p>Carted Cleared </p></div>
+        </div>`;
+    } catch (error) {
+        tableCheckout.innerHTML = `<div class="d-flex justify-content-center">
+            <div class="spinner-border text-center" role="status">
+                <span class="sr-only"></span>
+            </div>
+            <div class="text-center"><p>Error </p></div>
+        </div>`;
+    }
+});
