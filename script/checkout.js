@@ -85,3 +85,14 @@ function clickPurchase() {
     alert("Thank you for your purchasse");
 }
 purchaseBtn.addEventListener('click', clickPurchase);
+
+let clearBtn = document.querySelector('[clearBtn]');
+clearBtn.addEventListener('click', () => {
+    localStorage.removeItem('checkout');
+    tableCheckout.innerHTML =`<div class="text-center">
+    <div class="spinner-border text-center" role="status">
+      <span class="sr-only"></span>
+    </div>
+    <div class="text-center"><p>Your Cart is Empty Now</p></div>
+  </div>`;
+})
