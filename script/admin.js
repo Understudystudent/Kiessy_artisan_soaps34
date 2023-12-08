@@ -20,42 +20,47 @@ function adminContent() {
                     <td class="text-center" >${product.amount}.00</td>
                     <td>
                         <div> 
-                        <button class="btn btn-dark col-6" data-toggle="modal" data-target="#updateProduct" onclick="editProduct(${product.id})"><i class="bi bi-pencil-square"></i>Edit</button>
+                        <button class="btn btn-dark col-6" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="editProduct(${product.id})"><i class="bi bi-pencil-square"></i>Edit</button>
 
                          <!-- Modal -->
-                          <div class="modal fade" id="updateProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                             <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="updateProduct">Update Products</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                            <form>
-                            <div class="form-group">
-                                <label for="${product.name}">Product Name</label>
-                                <input type="text" class="form-control" id="${product.name}" placeholder="Enter product name">
-                            </div>
-                            <div class="form-group">
-                                <label for="${product.amount}">Product Price</label>
-                                <input type="text" class="form-control" id="${product.amount}" placeholder="Enter product price">
-                            </div>
-                            <div class="form-group">
-                                <label for="${product.make}">Product Make</label>
-                                <input type="text" class="form-control" id="${product.make}" placeholder="Enter product make">
-                            </div>
-                            <input type="hidden" id="updateProduct" value="">
-                        </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                            </div>
+                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                         <div class="modal-dialog">
+                           <div class="modal-content">
+                             <div class="modal-header">
+                               <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Soap</h1>
+                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                              </div>
+                             <div class="modal-body">
+                                <h4>Name</h4>
+                                <div id="bottomBorder">
+                                    <div>
+                                    <label>Name:</label>
+                                    <input type="text" id="soapName" placeholder="Soap Name">
+                                    </div>
+                                </div>
+                                <h4>Image</h4>
+                                <div id="bottomBorder">
+                                    <label>URL:</label>
+                                    <input type="text" id="soapImg" placeholder="Soap Url">
+                                </div>
+                                <h4>Type</h4>
+                                <div id="bottomBorder">
+                                    <label>Type</label>
+                                    <input type="text" id="typeSoap" placeholder="Soap Type">
+                                </div>
+                                <h4>Price</h4>
+                                <div id="bottomBorder">
+                                    <label>Price:</label>
+                                    <input type="number" id="soapPrice" placeholder="Soap Price">
+                                </div>
+                                </div>
+                             <div class="modal-footer">
+                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                               <button type="button" class="btn btn-primary">Save changes</button>
                              </div>
+                           </div>
+                         </div>
+                       </div>
 
                         
 
@@ -70,11 +75,10 @@ function adminContent() {
         <div class="spinner-border text-center" role="status">
           <span class="sr-only"></span>
         </div>
-        <div class="text-center"><p>Erro</p></div>
+        <div class="text-center"><p>Error</p></div>
       </div>`
     }
 }
-
 // Call the adminContent function to display products in the table
 adminContent();
 
@@ -106,7 +110,8 @@ function addNewProducts() {
       </div>`
     }
 }
-
+document.querySelector('#ModalSoap').addEventListener('click', addNewProducts);
+pushProducts.addEventListener('click', addNewProducts);
 
 // Delete Products
 function deleteProduct(id) {
@@ -147,7 +152,6 @@ adminProductSort.addEventListener('click', () => {
 });
 
 // Edit Products
-
 function editProduct() {
     try {
         let item = {
@@ -175,6 +179,3 @@ function editProduct() {
       </div>`
     }
 }
-
-document.querySelector('#ModalSoap').addEventListener('click', addNewProducts);
-// pushProducts.addEventListener('click', addNewProducts);

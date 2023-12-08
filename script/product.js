@@ -62,12 +62,13 @@ let products = JSON.parse(localStorage.getItem('products')) ? JSON.parse(localSt
         ]
     ));
 
-let productGrid = document.querySelector('[data-productCard]');
 // Display Products to HTML
+let productGrid = document.querySelector('[data-productCard]');
+// Search Products to HTML
 let searchProducts = document.querySelector('[data-search-product]')
 // Sort by price
 let sortPrice = document.querySelector('[data-sort-product]')
-// checkout storgae Key
+// checkout storage Key
 let checkout = JSON.parse(localStorage.getItem('checkout')) ? JSON.parse(localStorage.getItem('checkout')) : [];
 
 function showProducts() {
@@ -89,8 +90,6 @@ function showProducts() {
             </div>
             `;
         });
-
-        // Add to cart option 1
 
         // Initialize an array to product store
         let addToCartBtns = document.querySelectorAll(`[addToCartBtn]`);
@@ -146,11 +145,17 @@ searchProducts.addEventListener('keyup', () => {
             <div class="spinner-border" role="status">
               <span class="sr-only"></span>
             </div>
-            <div><h2>No Matching procduts are found</h2></div>
+            <div><h2>No Matching products are found</h2></div>
           </div>`;
         }
-    } catch (e) {
-        alert(e);
+    } //Display Spinner
+    catch (error) {
+        productGrid.innerHTML = `<div class="text-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only"></span>
+        </div>
+        <div><h2>Prodcuts are found,Please Refrresh the page</h2></div>
+      </div>`;
     }
 });
 
