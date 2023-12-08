@@ -65,11 +65,22 @@ function displayCartItems() {
             </tr>
         `;
     } catch (error) {
-        // Clear the table in case of an error
-        tableCheckout.innerHTML = '';
-        tableCheckout.style.fontSize = '3rem';
+        // Display if Cart is empty
+        tableCheckout.innerHTML = `<div class="text-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only"></span>
+        </div>
+        <div class="text-center"><p>Your Cart is empty, please add items</p></div>
+      </div>`
     }
 };
 
-
 displayCartItems()
+
+
+//Purchase Btn
+let purchaseBtn = document.querySelector('[data-purchase-btn]');
+function clickPurchaseBtn() {
+    alert("Thank you for purchase?");
+}
+purchaseBtn.addEventListener('click', clickPurchaseBtn);
