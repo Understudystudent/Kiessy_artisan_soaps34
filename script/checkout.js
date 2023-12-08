@@ -2,8 +2,7 @@ document.querySelector('#currentYear').textContent = new Date().getFullYear();
 
 let cartItems = JSON.parse(localStorage.getItem('checkout')) || [];
 let tableCheckout = document.querySelector('[checkoutTable]');
-// Purchase btn
-let purchaseBtn = document.querySelector('[purchaseBtn]');
+
 
 
 // Show items in checkout
@@ -44,7 +43,10 @@ function displayCartItems() {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>
+                        <td col-
+                        
+                        
+                        4>
                         <img src="${itemGroup[0].img}" class='img-fluid w-25 h-25'  alt='${itemGroup[0].name}'>
                         </td>
                         <td>${itemGroup[0].make}</td>
@@ -80,19 +82,27 @@ function displayCartItems() {
 };
 displayCartItems()
 
-//Purchase btn
-function clickPurchase() {
-    alert("Thank you for your purchasse");
-}
-purchaseBtn.addEventListener('click', clickPurchase);
+// Purchase btn
+let purchaseBtn = document.querySelector('[purchaseBtn]');
 
-let clearBtn = document.querySelector('[clearBtn]');
-clearBtn.addEventListener('click', () => {
-    localStorage.removeItem('checkout');
-    tableCheckout.innerHTML =`<div class="text-center">
+function clickPurchase() {
+    tableCheckout.innerHTML =  `<div class="text-center">
     <div class="spinner-border text-center" role="status">
       <span class="sr-only"></span>
     </div>
-    <div class="text-center"><p>Your Cart is Empty Now</p></div>
+    <div class="text-center"><p>Thank you for your purchase</p></div>
+  </div>`;
+}
+purchaseBtn.addEventListener('click', clickPurchase);
+
+// Clear btn by removing the local storage
+let clearBtn = document.querySelector('[clearBtn]');
+clearBtn.addEventListener('click', () => {
+    localStorage.removeItem('checkout');
+    tableCheckout.innerHTML =`<div class="d-flex justify-content-center">
+    <div class="spinner-border text-center" role="status">
+      <span class="sr-only"></span>
+    </div>
+    <div class="text-center"><p>Carted Cleared </p></div>
   </div>`;
 })
