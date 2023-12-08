@@ -1,3 +1,5 @@
+@import url(https://lifechoicesnpo.slack.com/archives/D062M7UCGTT/p1701686647267979);
+
 *
 ::after
 ::before
@@ -5,6 +7,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
 }
 
 
