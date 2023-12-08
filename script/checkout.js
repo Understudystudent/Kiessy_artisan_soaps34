@@ -2,7 +2,11 @@ document.querySelector('#currentYear').textContent = new Date().getFullYear();
 
 let cartItems = JSON.parse(localStorage.getItem('checkout')) || [];
 let tableCheckout = document.querySelector('[checkoutTable]');
+// Purchase btn
+let purchaseBtn = document.querySelector('[purchaseBtn]');
 
+
+// Show items in checkout
 function displayCartItems() {
     try {
         if (cartItems.length === 0) {
@@ -66,10 +70,18 @@ function displayCartItems() {
         `;
     } catch (error) {
         // Clear the table in case of an error
-        tableCheckout.innerHTML = '';
-        tableCheckout.style.fontSize = '3rem';
+        tableCheckout.innerHTML = `<div class="text-center">
+        <div class="spinner-border text-center" role="status">
+          <span class="sr-only"></span>
+        </div>
+        <div class="text-center"><p>Your Cart is Empty, Please refresh yor page</p></div>
+      </div>`;
     }
 };
-
-
 displayCartItems()
+
+//Purchase btn
+function clickPurchase() {
+    alert("Thank you for your purchasse");
+}
+purchaseBtn.addEventListener('click', clickPurchase);

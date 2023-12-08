@@ -66,7 +66,12 @@ function adminContent() {
             `;
         });
     } catch (e) {
-        console.error(e);
+        tableCheckout.innerHTML = `<div class="text-center">
+        <div class="spinner-border text-center" role="status">
+          <span class="sr-only"></span>
+        </div>
+        <div class="text-center"><p>Erro</p></div>
+      </div>`
     }
 }
 
@@ -75,18 +80,33 @@ adminContent();
 
 // Adding Products
 function addNewProducts() {
-    let item = {
-        id: products.length + 1,
-        name: document.querySelector('#soapName').value,
-        make: document.querySelector('#typeSoap').value,
-        amount: document.querySelector('#soapPrice').value,
-        img: document.querySelector('#soapImg').value,
-    };
-    // adding itemts into array
-    products.push(item);
-    localStorage.setItem('products', JSON.stringify(products));
-    adminContent();
+    try {
+        let item = {
+            id: products.length + 1,
+            name: document.querySelector('#soapName').value,
+            make: document.querySelector('#typeSoap').value,
+            amount: document.querySelector('#soapPrice').value,
+            img: document.querySelector('#soapImg').value,
+        };
+
+        if (!item.name || !item.make || !item.amount || !item.img) {
+            throw new Error('Empty fileds please refresh the page');
+        }
+
+        // Adding items into array and saving it
+        products.push(item);
+        localStorage.setItem('products', JSON.stringify(products));
+        adminContent();
+    } catch (error) {
+        tableCheckout.innerHTML = `<div class="text-center">
+        <div class="spinner-border text-center" role="status">
+          <span class="sr-only"></span>
+        </div>
+        <div class="text-center"><p>A error has occuried, please refresh the page</p></div>
+      </div>`
+    }
 }
+
 
 // Delete Products
 function deleteProduct(id) {
@@ -106,7 +126,6 @@ function deleteProduct(id) {
     }
 }
 
-
 //Sort Products
 adminProductSort.addEventListener('click', () => {
     try {
@@ -122,11 +141,40 @@ adminProductSort.addEventListener('click', () => {
         <div class="spinner-border" role="status">
           <span class="sr-only"></span>
         </div>
-        <div><h2>Products are not found,Please Refrresh the page</h2></div>
+        <div><h2>Products are not found,Please Refresh the page</h2></div>
       </div>`;
     }
 });
 
+// Edit Products
+
+function editProduct() {
+    try {
+        let item = {
+            id: products.length + 1,
+            name: document.querySelector('#soapName').value,
+            make: document.querySelector('#typeSoap').value,
+            amount: document.querySelector('#soapPrice').value,
+            img: document.querySelector('#soapImg').value,
+        };
+
+        if (!item.name || !item.make || !item.amount || !item.img) {
+            throw new Error('Empty fileds please refresh the page');
+        }
+
+        // Adding items into array and saving it
+        products.push(item);
+        localStorage.setItem('products', JSON.stringify(products));
+        adminContent();
+    } catch (error) {
+        tableCheckout.innerHTML = `<div class="text-center">
+        <div class="spinner-border text-center" role="status">
+          <span class="sr-only"></span>
+        </div>
+        <div class="text-center"><p>A error has occuried, please refresh the page</p></div>
+      </div>`
+    }
+}
 
 document.querySelector('#ModalSoap').addEventListener('click', addNewProducts);
 // pushProducts.addEventListener('click', addNewProducts);

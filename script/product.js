@@ -67,6 +67,7 @@ let productGrid = document.querySelector('[data-productCard]');
 let searchProducts = document.querySelector('[data-search-product]')
 // Sort by price
 let sortPrice = document.querySelector('[data-sort-product]')
+// checkout storgae Key
 let checkout = JSON.parse(localStorage.getItem('checkout')) ? JSON.parse(localStorage.getItem('checkout')) : [];
 
 function showProducts() {
@@ -169,7 +170,7 @@ sortPrice.addEventListener('click', (event) => {
         <div class="spinner-border" role="status">
           <span class="sr-only"></span>
         </div>
-        <div><h2>Procduts are found,Please Refrresh the page</h2></div>
+        <div><h2>Prodcuts are found,Please Refrresh the page</h2></div>
       </div>`;
     }
 });

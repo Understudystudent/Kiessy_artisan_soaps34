@@ -17,7 +17,7 @@
   <title>Admin</title>
 </head>
 
-<body>
+<body id="admin">
 
   <!-- This is the navbar -->
   <nav class="navbar navbar-expand-lg navbar-ligh ">
@@ -91,8 +91,48 @@
     </div>
   </main>
 
-  <!-- ModalSoap -->
+  <!-- ModalSoap 1 -->
   <div class="modal fade text-center" id="ModalSoap" tabindex="-1">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-center" id="ModalSoapLabel">New Soap</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <h4>Name</h4>
+          <div id="bottomBorder">
+            <div>
+              <label>Name:</label>
+              <input type="text" id="soapName" placeholder="Soap Name">
+            </div>
+          </div>
+          <h4>Image</h4>
+          <div id="bottomBorder">
+            <label>URL:</label>
+            <input type="text" id="soapImg" placeholder="Soap Url">
+          </div>
+          <h4>Type</h4>
+          <div id="bottomBorder">
+            <label>Type</label>
+            <input type="text" id="typeSoap" placeholder="Soap Type">
+          </div>
+          <h4>Price</h4>
+          <div id="bottomBorder">
+            <label>Price:</label>
+            <input type="number" id="soapPrice" placeholder="Soap Price">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-dark" id="addRecord">Add Soap</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ModalSoap 2 -->
+  <div class="modal fade text-center" id="ModalSoap2" tabindex="-1">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
